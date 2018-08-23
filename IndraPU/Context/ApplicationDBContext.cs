@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using IndraPU.Domain;
 
 namespace IndraPU.Context
 {
@@ -14,7 +15,11 @@ namespace IndraPU.Context
             : base("DefaultConnection")
         {
             Database.SetInitializer<ApplicationDbContext>(null);        }
-        
+
+
+        public DbSet<OPD> OPDs { get; set; }
+
+        public DbSet<Activity> Activities { get; set; }
 
         public static ApplicationDbContext Create()
         {
