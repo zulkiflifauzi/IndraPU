@@ -198,9 +198,19 @@
     <Compile Include="Base\ResponseMessage.cs" />
     <Compile Include="Component\HtmlComponent.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Domain\Activity.cs" />
+    <Compile Include="Domain\OPD.cs" />
     <Compile Include="Logic\Interface\IBaseLogic.cs" />
     <Compile Include="Logic\Interface\IUserLogic.cs" />
     <Compile Include="Logic\UserLogic.cs" />
+    <Compile Include="Migrations\201808221055430_InitialMigration.cs" />
+    <Compile Include="Migrations\201808221055430_InitialMigration.Designer.cs">
+      <DependentUpon>201808221055430_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808221337104_AddOPDTables.cs" />
+    <Compile Include="Migrations\201808221337104_AddOPDTables.Designer.cs">
+      <DependentUpon>201808221337104_AddOPDTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Component\ExtensionMethod.cs" />
     <Compile Include="Context\ApplicationDBContext.cs" />
@@ -224,6 +234,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\favico.jpg" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -247,7 +259,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -281,17 +295,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Address\Create.cshtml" />
-    <Content Include="Views\Address\Index.cshtml" />
-    <Content Include="Views\Address\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
-    <Content Include="Views\Address\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Domain\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -300,6 +309,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808221055430_InitialMigration.resx">
+      <DependentUpon>201808221055430_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808221337104_AddOPDTables.resx">
+      <DependentUpon>201808221337104_AddOPDTables.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -319,7 +336,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50975</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:44350/</IISUrl>
+          <IISUrl>http://localhost:8081/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

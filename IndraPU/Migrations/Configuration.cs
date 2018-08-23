@@ -55,7 +55,7 @@ namespace IndraPU.Migrations
             }
 
             // create roles
-            string[] rolesToCreate = new string[] { "Data Entry", "Administrator" };
+            string[] rolesToCreate = new string[] { "Data Entry", "Administrator", "Viewer" };
             var roleManager = new ApplicationRoleManager(new NetRoleStore(context));
             foreach (var role in rolesToCreate)
             {
