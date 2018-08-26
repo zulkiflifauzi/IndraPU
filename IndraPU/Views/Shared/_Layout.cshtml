@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Indra App</title>
+    <title>@ViewBag.Title - E-BALAI</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" />
@@ -13,42 +13,35 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="/">
-                    <img src="~/Content/Images/logo.png" width="350px" /> 
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Beranda", "Index", "Home")</li>*@
-                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                    @if (User.IsInRole("Administrator"))
-                    {
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">OPD</a>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Tambah Data", "Create", "OPD")</li>
-                                @*<li class="dropdown-submenu">
-                                    <a href="#">More..</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">3rd level</a></li>
-                                        <li><a href="#">3rd level</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Second level</a></li>
-                                <li><a href="#">Second level</a></li>*@
-                            </ul>
-                        </li>
-                        <li>@Html.ActionLink("User", "Index", "User")</li>
-                    }
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="/">
+                            <img src="~/Content/Images/logo.png" width="350px" />
+                        </a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            @*<li>@Html.ActionLink("Beranda", "Index", "Home")</li>*@
+                            @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li>@Html.ActionLink("OPD", "Index", "OPD")</li>
+                                <li>@Html.ActionLink("User", "Index", "User")</li>
+                                <li>@Html.ActionLink("Instruktur", "Index", "Instructor")</li>
+                            }
+                        </ul>
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -56,6 +49,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/thirdparty")
     @RenderSection("scripts", required: false)
 
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -66,7 +60,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Indra App</p>
+            <p>&copy; @DateTime.Now.Year - E-BALAI</p>
         </footer>
     </div>
 
