@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>DAFTAR OPD</h2>
+        @Html.ActionLink("Tambah data OPD", "Create", "OPD", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+    </div>
+    
+</div>
+
+<div class ="row">
+    <hr>
+    <div class="col-sm-4">
+        <h2>Input</h2>
+        <!-- <form> -->
+        <div class="form-group">
+            <label for="input-search" class="sr-only">Search:</label>
+            <input type="input" class="form-control" id="input-search" placeholder="Type to search..." value="">
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" class="checkbox" id="chk-ignore-case" value="false">
+                Ignore Case
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" class="checkbox" id="chk-exact-match" value="false">
+                Exact Match
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" class="checkbox" id="chk-reveal-results" value="false">
+                Reveal Results
+            </label>
+        </div>
+        <button type="button" class="btn btn-success" id="btn-search">Search</button>
+        <button type="button" class="btn btn-default" id="btn-clear-search">Clear</button>
+        <!-- </form> -->
+    </div>
+    <div class="col-sm-4">
+        <h2>OPD</h2>
+        <div id="tree" class=""></div>
+    </div>
+    <div class="col-sm-4">
+        <h2>Results</h2>
+        <div id="search-output"></div>
+    </div>
+</div>
+
+
+<script>
+    function getTree() {        
+        return @Html.Raw(ViewData["nodes"]);
+    }
+
+    $(document).ready(function () {
+        var $searchableTree = $('#tree').treeview({ enableLinks: true, data: getTree() });
+
+        var search = function (e) {
+            var pattern = $('#input-search').val();
+            var options = {
+                ignoreCase: $('#chk-ignore-case').is(':checked'),
+                exactMatch: $('#chk-exact-match').is(':checked'),
+                revealResults: $('#chk-reveal-results').is(':checked')
+            };
+            var results = $searchableTree.treeview('search', [pattern, options]);
+
+            var output = '<p>' + results.length + ' matches found</p>';
+            $.each(results, function (index, result) {
+                output += '<p>- <a href="' + result.href + '">' + result.text + '<a></p>';
+            });
+            $('#search-output').html(output);
+        }
+
+        $('#btn-search').on('click', search);
+        $('#input-search').on('keyup', search);
+
+        $('#btn-clear-search').on('click', function (e) {
+            $searchableTree.treeview('clearSearch');
+            $('#input-search').val('');
+            $('#search-output').html('');
+        });
+    });
+
+
+</script>
+

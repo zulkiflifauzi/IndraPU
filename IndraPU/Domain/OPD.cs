@@ -14,7 +14,10 @@ namespace IndraPU.Domain
         [Key]
         public int Id { get; set; }
 
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
+
+        [Required]
+        public string Title { get; set; }
 
         [Required]
         public string Type { get; set; }

@@ -21,6 +21,12 @@ namespace IndraPU.Context
 
         public DbSet<Activity> Activities { get; set; }
 
+        public DbSet<State> States { get; set; }
+
+        public DbSet<City> Cities { get; set; }
+
+        public DbSet<Instructor> Instructors { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
