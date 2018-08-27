@@ -29,5 +29,10 @@ namespace IndraPU.Component
                 _stateViewModels.Add(new StateViewModel() { Id = state.Id, Title = state.Title });
             }
         }
+
+        public static List<StateViewModel> GetAllStates()
+        {
+            return _stateViewModels;
+        }
     }
 }

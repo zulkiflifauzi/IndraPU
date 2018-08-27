@@ -1,4 +1,5 @@
-﻿using IndraPU.Logic;
+﻿using IndraPU.Component;
+using IndraPU.Logic;
 using IndraPU.Models;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,20 @@ namespace IndraPU.Controllers
         // GET: Instructor/Create
         public ActionResult Create()
         {
+            PrepareSelectList();
             return View();
+        }
+
+        private void PrepareSelectList()
+        {
+            var states = StateFactory.GetAllStates();
+
+            List<SelectListItem> stateList = new List<SelectListItem>();
+            foreach (var item in states)
+            {
+                stateList.Add(new SelectListItem { Value = item.Id.ToString(), Text = item.Title });
+            }
+            ViewData["States"] = stateList;
         }
 
         // POST: Instructor/Create
