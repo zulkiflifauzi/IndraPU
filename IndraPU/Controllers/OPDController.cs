@@ -1,4 +1,5 @@
 ﻿using IndraPU.Base;
+using IndraPU.Component;
 using IndraPU.Domain;
 using IndraPU.Logic;
 using IndraPU.Models;
@@ -114,6 +115,7 @@ namespace IndraPU.Controllers
                         ModelState.AddModelError(string.Empty, item);
                     }
                     PrepareSelectList();
+                    OPDFactory.InitializeContainers();
                     return View(model);
                 }
 

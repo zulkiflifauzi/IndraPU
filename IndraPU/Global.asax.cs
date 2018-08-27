@@ -19,6 +19,7 @@ namespace IndraPU
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             StateFactory.InitializeContainers();
+            OPDFactory.InitializeContainers();
         }
     }
 }

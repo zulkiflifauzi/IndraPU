@@ -123,5 +123,98 @@ namespace IndraPU.Component
 
             return MvcHtmlString.Create(result.ToString());
         }
+
+        public static MvcHtmlString OPDMenu(this HtmlHelper htmlHelper)
+        {
+
+            var opds = OPDFactory.GetAllOPDs();
+
+            var roots = opds.Where(c => !c.ParentId.HasValue).ToList();
+
+            List<NodeViewModel> nodes = new List<NodeViewModel>();
+            var result = new StringBuilder();
+
+            foreach (var item in roots)
+            {
+                CreateNodes(opds, nodes, item, result);
+            }
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
+        private static void CreateNodes(List<OPDViewModel> opds, List<NodeViewModel> nodes, OPDViewModel item, StringBuilder result)
+        {
+            NodeViewModel node = new NodeViewModel();
+
+            node.text = item.Title;
+            node.href = "/OPD/View/" + item.Id;
+            nodes.Add(node);
+
+            //if (item.nodes.Count > 0)
+            //{
+            //    result.Append("<li>");
+            //    result.Append("<a href='" + item.href + "'>" + item.text + "</a><span class='caret'></span>");
+            //    result.Append("<ul class='dropdown-menu'>");
+            //    CreateSubNodes(item, result);
+            //    result.Append("</ul>");
+            //    result.Append("</li>");
+            //}
+            //else
+            //    result.Append("<li><a href='" + item.href + "'>" + item.text + "</a></li>");
+
+            var childs = opds.Where(c => c.ParentId == item.Id).ToList();
+            if (childs.Count > 0)
+            {
+                result.Append("<li>");
+                result.Append("<a href='" + node.href + "'>" + node.text + "<span class='caret'></span></a>");
+                result.Append("<ul class='dropdown-menu'>");
+                node.nodes = new List<NodeViewModel>();
+                foreach (var child in childs)
+                {
+                    CreateNodes(opds, node.nodes, child, result);
+                }
+
+                result.Append("</ul>");
+                result.Append("</li>");
+            }
+            else
+                result.Append("<li><a href='" + node.href + "'>" + node.text + "</a></li>");
+        }
+
+        //public static MvcHtmlString OPDMenu(this HtmlHelper htmlHelper)
+        //{
+        //    var result = new StringBuilder();
+        //    foreach (var item in OPDFactory.PrepareNodes().Where())
+        //    {
+        //        if (item.nodes.Count > 0)
+        //        {
+        //            result.Append("<li>");
+        //            result.Append("<a href='" + item.href + "'>" + item.text + "</a><span class='caret'></span>");
+        //            result.Append("<ul class='dropdown-menu'>");
+        //            CreateSubNodes(item, result);
+        //            result.Append("</ul>");
+        //            result.Append("</li>"); 
+        //        }
+        //        else
+        //            result.Append("<li><a href='" + item.href + "'>" + item.text + "</a></li>");
+        //    }
+
+        //    return MvcHtmlString.Create(result.ToString());
+        //}
+
+        //private static void CreateSubNodes(NodeViewModel node, StringBuilder result)
+        //{
+        //    if (node.nodes.Count > 0)
+        //    {
+        //        result.Append("<li>");
+        //        result.Append("<a href='" + node.href + "'>" + node.text + "</a><span class='caret'></span>");
+        //        result.Append("<ul class='dropdown-menu'>");
+        //        CreateSubNodes(node, result);
+        //        result.Append("</ul>");
+        //        result.Append("</li>");
+        //    }
+        //    else
+        //        result.Append("<li><a href='" + node.href + "'>" + node.text + "</a></li>");
+        //}
     }
 }

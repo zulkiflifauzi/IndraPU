@@ -201,6 +201,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Base\ResponseMessage.cs" />
     <Compile Include="Component\HtmlComponent.cs" />
+    <Compile Include="Component\OPDFactory.cs" />
     <Compile Include="Component\StateFactory.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\CityController.cs" />

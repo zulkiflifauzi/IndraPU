@@ -17,7 +17,9 @@ namespace IndraPU
             bundles.Add(new ScriptBundle("~/bundles/thirdparty").Include(
                         "~/Scripts/ckeditor/ckeditor.js",
                         "~/Scripts/bootstrap-treeview.min.js",
-                        "~/Scripts/bootstrap-datepicker.min.js"));
+                        "~/Scripts/bootstrap-datepicker.min.js",
+                        "~/Scripts/smartmenus/jquery.smartmenus.min.js",
+                        "~/Scripts/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.min.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
