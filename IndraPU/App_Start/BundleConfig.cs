@@ -32,7 +32,9 @@ namespace IndraPU
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Scripts/bootstrap-dropdown/css/animate.css",
-                      "~/Scripts/bootstrap-dropdown/css/bootstrap-dropdownhover.css"));
+                      "~/Scripts/bootstrap-dropdown/css/bootstrap-dropdownhover.css",
+                      "~/Content/bootstrap-datepicker3.min.css",
+                      "~/Scripts/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.css"));
         }
     }
 }

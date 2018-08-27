@@ -34,5 +34,10 @@ namespace IndraPU.Component
         {
             return _stateViewModels;
         }
+
+        public static List<CityViewModel> GetCitiesByStateId(int id)
+        {
+            return _cityViewModels.Where(c => c.StateId == id).ToList();
+        }
     }
 }

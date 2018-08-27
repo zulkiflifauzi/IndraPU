@@ -32,8 +32,10 @@ namespace IndraPU.Models
 
         [Required]
         [Display(Name = "Nomor Telepon")]
+        [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
