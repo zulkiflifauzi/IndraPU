@@ -26,7 +26,7 @@ namespace IndraPU.Component
             var states = _stateLogic.GetAll();
             foreach (var state in states)
             {
-                _stateViewModels.Add(new StateViewModel() { Id = state.Id, Title = state.Title });
+                _stateViewModels.Add(new StateViewModel() { Id = state.Id, Title = state.Title, Latitude = state.Latitude.HasValue ? state.Latitude.Value : 0, Longitude = state.Longitude.HasValue ? state.Longitude.Value : 0 });
             }
         }
 

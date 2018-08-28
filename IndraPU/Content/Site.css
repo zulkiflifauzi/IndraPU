@@ -132,3 +132,18 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   color: #0c5da5;
   background-color: #fff !important;
 }
+
+@media (max-width: 767px) {
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #0c5da5;
+  }
+
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #8643d6;
+    background-color: transparent;
+  }
+
+  .navbar-inverse .navbar-toggle > .icon-bar {
+    background-color: #000;
+    }
+}

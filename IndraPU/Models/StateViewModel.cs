@@ -13,5 +13,9 @@ namespace IndraPU.Models
         [Required]
         [Display(Name = "Nama")]
         public string Title { get; set; }
+
+        public double Latitude { get; set; }
+
+        public double Longitude { get; set; }
     }
 }

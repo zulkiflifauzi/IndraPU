@@ -27,6 +27,8 @@ namespace IndraPU.Context
 
         public DbSet<Instructor> Instructors { get; set; }
 
+        public DbSet<Program> Programs { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

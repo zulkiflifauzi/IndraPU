@@ -172,6 +172,7 @@ namespace IndraPU.Controllers
                         ModelState.AddModelError(string.Empty, item);
                     }
                     PrepareSelectList();
+                    OPDFactory.InitializeContainers();
                     return View(model);
                 }
                 return RedirectToAction("Index");

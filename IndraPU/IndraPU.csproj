@@ -207,12 +207,14 @@
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
     <Compile Include="Controllers\OPDController.cs" />
+    <Compile Include="Controllers\ProgramController.cs" />
     <Compile Include="Controllers\StateController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Domain\Activity.cs" />
     <Compile Include="Domain\City.cs" />
     <Compile Include="Domain\Instructor.cs" />
     <Compile Include="Domain\OPD.cs" />
+    <Compile Include="Domain\Program.cs" />
     <Compile Include="Domain\State.cs" />
     <Compile Include="Logic\ActivityLogic.cs" />
     <Compile Include="Logic\CityLogic.cs" />
@@ -222,9 +224,11 @@
     <Compile Include="Logic\Interface\ICityLogic.cs" />
     <Compile Include="Logic\Interface\IInstructorLogic.cs" />
     <Compile Include="Logic\Interface\IOPDLogic.cs" />
+    <Compile Include="Logic\Interface\IProgramLogic.cs" />
     <Compile Include="Logic\Interface\IStateLogic.cs" />
     <Compile Include="Logic\Interface\IUserLogic.cs" />
     <Compile Include="Logic\OPDLogic.cs" />
+    <Compile Include="Logic\ProgramLogic.cs" />
     <Compile Include="Logic\StateLogic.cs" />
     <Compile Include="Logic\UserLogic.cs" />
     <Compile Include="Migrations\201808221055430_InitialMigration.cs" />
@@ -263,11 +267,24 @@
     <Compile Include="Migrations\201808260527083_AddForeignKeyInstructor.Designer.cs">
       <DependentUpon>201808260527083_AddForeignKeyInstructor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808280554504_AddProgramTable.cs" />
+    <Compile Include="Migrations\201808280554504_AddProgramTable.Designer.cs">
+      <DependentUpon>201808280554504_AddProgramTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808280558331_AddProgramTitle.cs" />
+    <Compile Include="Migrations\201808280558331_AddProgramTitle.Designer.cs">
+      <DependentUpon>201808280558331_AddProgramTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808280815272_ChangeLatLongState.cs" />
+    <Compile Include="Migrations\201808280815272_ChangeLatLongState.Designer.cs">
+      <DependentUpon>201808280815272_ChangeLatLongState.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ActivityViewModel.cs" />
     <Compile Include="Models\CityViewModel.cs" />
     <Compile Include="Models\DikbudViewModel.cs" />
     <Compile Include="Models\InstructorViewModel.cs" />
     <Compile Include="Models\NodeViewModel.cs" />
+    <Compile Include="Models\ProgramViewModel.cs" />
     <Compile Include="Models\StateViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Component\ExtensionMethod.cs" />
@@ -292,9 +309,11 @@
     <Compile Include="Repositories\Interfaces\ICityRepository.cs" />
     <Compile Include="Repositories\Interfaces\IInstructorRepository.cs" />
     <Compile Include="Repositories\Interfaces\IOPDRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IProgramRepository.cs" />
     <Compile Include="Repositories\Interfaces\IStateRepository.cs" />
     <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
     <Compile Include="Repositories\OPDRepository.cs" />
+    <Compile Include="Repositories\ProgramRepository.cs" />
     <Compile Include="Repositories\StateRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Startup.cs" />
@@ -700,6 +719,7 @@
     <Content Include="Scripts\ckeditor\skins\v2\templates.css" />
     <Content Include="Scripts\ckeditor\themes\default\theme.js" />
     <None Include="Scripts\jquery-3.3.1-vsdoc.js" />
+    <Content Include="Scripts\gmaps.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -895,6 +915,11 @@
     <Content Include="Scripts\smartmenus\css\sm-simple\_sm-simple-theme.scss" />
     <Content Include="Scripts\smartmenus\LICENSE-MIT" />
     <Content Include="Scripts\smartmenus\README.md" />
+    <Content Include="Views\Program\Index.cshtml" />
+    <Content Include="Views\Program\Create.cshtml" />
+    <Content Include="Views\Program\Edit.cshtml" />
+    <Content Include="Views\Program\Details.cshtml" />
+    <Content Include="Views\Program\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -932,6 +957,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808260527083_AddForeignKeyInstructor.resx">
       <DependentUpon>201808260527083_AddForeignKeyInstructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808280554504_AddProgramTable.resx">
+      <DependentUpon>201808280554504_AddProgramTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808280558331_AddProgramTitle.resx">
+      <DependentUpon>201808280558331_AddProgramTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808280815272_ChangeLatLongState.resx">
+      <DependentUpon>201808280815272_ChangeLatLongState.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,5 @@
-﻿using IndraPU.Domain;
+﻿using IndraPU.Component;
+using IndraPU.Domain;
 using IndraPU.Logic;
 using IndraPU.Models;
 using System;
@@ -20,6 +21,12 @@ namespace IndraPU.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult GetStates()
+        {
+            return Json(StateFactory.GetAllStates());
         }
 
         // GET: State

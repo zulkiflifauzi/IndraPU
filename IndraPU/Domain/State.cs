@@ -20,9 +20,9 @@ namespace IndraPU.Domain
         [Required]
         public string Title { get; set; }
         
-        public long? Latitude { get; set; } 
+        public double? Latitude { get; set; } 
 
-        public long? Longitude { get; set; }
+        public double? Longitude { get; set; }
 
         private ICollection<int> _cityIds;
         [NotMapped]
