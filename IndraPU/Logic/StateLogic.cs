@@ -48,5 +48,10 @@ namespace IndraPU.Logic
         {
             throw new NotImplementedException();
         }
+
+        public List<State> GetStatesGraph(string id, int year)
+        {
+            return _repository.GetStatesGraph(id, year);
+        }
     }
 }

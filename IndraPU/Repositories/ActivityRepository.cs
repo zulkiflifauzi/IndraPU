@@ -47,9 +47,33 @@ namespace IndraPU.Repositories
             return _db.Activities.Where(c => c.OPDId == opdId).ToList();
         }
 
+        public List<Program> GetActivitiesByYear(string id, int year)
+        {
+            if (id == null)
+            {
+                return _db.Programs.Where(c => c.Date.Year == year).ToList();
+            }
+            else
+            {
+                List<string> ids = id.Split(',').ToList();
+                List<int> idInts = new List<int>();
+                foreach (var item in ids)
+                {
+                    idInts.Add(Convert.ToInt32(item));
+                }
+                return _db.Programs.Where(c => c.Date.Year == year && idInts.Contains(c.StateId)).ToList();
+            }
+            
+        }
+
         public List<Activity> GetAll()
         {
             return _db.Activities.ToList();
+        }
+
+        public List<string> GetBudgetYears()
+        {
+            return _db.Activities.Select(c => c.Date.Year.ToString()).Distinct().ToList();
         }
 
         public Activity GetById(int id)

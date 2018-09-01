@@ -29,6 +29,8 @@ namespace IndraPU.Context
 
         public DbSet<Program> Programs { get; set; }
 
+        public DbSet<OPDBudget> OPDBudgets { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

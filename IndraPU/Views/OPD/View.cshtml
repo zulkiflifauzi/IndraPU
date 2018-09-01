@@ -16,7 +16,20 @@
         <h3>Bentuk: @Html.DisplayFor(model => model.Type)</h3>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <h3>PIC</h3>
+        <p>@Html.DisplayFor(model => model.PIC)</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <h3>Nomor Telepon</h3>
+        <p>@Html.DisplayFor(model => model.PhoneNumber)</p>
+    </div>
+</div>
 <div class="row">
     <div class="col-md-12">
         <hr />
@@ -27,7 +40,50 @@
 <div class="row">
     <div class="col-md-12">
         <hr />
-        <h3>Anggaran (Rp.): @Html.DisplayFor(model => model.Budget)</h3>
+        <h3>Anggaran (Rp.): @Html.DisplayFor(model => model.ThisYearBudget)</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <h3>Histori Anggaran</h3>
+        <div>
+            <p>
+                @Html.ActionLink("Tambah data Anggaran", "Create", "OPDBudget", routeValues: new { @id = Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+            </p>
+
+        </div>
+        <div>
+            <table id="opdBudgetsTable" class="table">
+                <thead>
+                    <tr>
+                        <th>Tahun</th>
+                        <th>Anggaran</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OPDBudgets)
+                    {
+                        <tr>
+                            <td>@item.Year</td>
+                            <td>@item.Budget</td>
+                            <td>
+                                @Html.ActionLink("Ubah", "Edit", "OPDBudget", routeValues: new { @id = item.Id }, htmlAttributes: new { @class = "btn btn-primary" }) @Html.ActionLink("Hapus", "Delete", "OPDBudget", routeValues: new { @id = item.Id }, htmlAttributes: new { @class = "btn btn-warning" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Tahun</th>
+                        <th>Anggaran</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -94,5 +150,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#activitiesTable').DataTable();
+
+        $('#opdBudgetsTable').DataTable();
     });
+
 </script>

@@ -10,5 +10,7 @@ namespace IndraPU.Repositories.Interfaces
     public interface IStateRepository : IBaseRepository<State>
     {
         bool IsStateExist(string areaCode);
+
+        List<State> GetStatesGraph(string id, int year);
     }
 }

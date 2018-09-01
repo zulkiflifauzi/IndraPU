@@ -36,6 +36,11 @@ namespace IndraPU.Repositories
                 _db.Activities.Remove(item);
             }
 
+            foreach (var item in oldData.OPDBudgets.ToList())
+            {
+                _db.OPDBudgets.Remove(item);
+            }
+
             _db.OPDs.Remove(oldData);
             _db.SaveChanges();
         }

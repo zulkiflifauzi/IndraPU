@@ -17,16 +17,19 @@ namespace IndraPU.Domain
         public int? ParentId { get; set; }
 
         [Required]
+        public string PIC { get; set; }
+
+        [Required]
+        public string PhoneNumber { get; set; }
+
+        [Required]
         public string Title { get; set; }
 
         [Required]
         public string Type { get; set; }
 
         public string Structure { get; set; }
-
-        [Required]
-        public decimal Budget { get; set; }
-
+        
         private ICollection<int> _activityIds;
         [NotMapped]
         public ICollection<int> ActivityIds
@@ -41,5 +44,21 @@ namespace IndraPU.Domain
             get { return _activities ?? (_activities = new Collection<Activity>()); }
             set { _activities = value; }
         }
+
+        private ICollection<int> _opdBudgetIds;
+        [NotMapped]
+        public ICollection<int> OPDBudgetIds
+        {
+            get { return _opdBudgetIds ?? (_opdBudgetIds = OPDBudgets.Select(s => s.Id).ToList()); }
+            set { _opdBudgetIds = value; }
+        }
+
+        private ICollection<OPDBudget> _opdBudgets;
+        public virtual ICollection<OPDBudget> OPDBudgets
+        {
+            get { return _opdBudgets ?? (_opdBudgets = new Collection<OPDBudget>()); }
+            set { _opdBudgets = value; }
+        }
+
     }
 }

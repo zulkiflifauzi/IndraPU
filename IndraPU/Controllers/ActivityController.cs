@@ -13,6 +13,20 @@ namespace IndraPU.Controllers
     {
         private ActivityLogic _actLogic = new ActivityLogic();
 
+        [HttpPost]
+        public ActionResult GetBudgetYears()
+        {
+            return Json(_actLogic.GetBudgetYears());
+        }
+
+        [HttpPost]
+        public ActionResult GetGraphData(string id, int year)
+        {
+            var activities = _actLogic.GetActivitiesByYear(id, year);
+
+            return Json(activities);
+        }
+
         // GET: Activity
         public ActionResult Index(int id)
         {

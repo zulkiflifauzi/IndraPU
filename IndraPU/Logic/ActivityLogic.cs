@@ -45,9 +45,19 @@ namespace IndraPU.Logic
             return _repository.GetActivitiesByOPDId(opdId);
         }
 
+        public List<Program> GetActivitiesByYear(string id, int year)
+        {
+            return _repository.GetActivitiesByYear(id, year);
+        }
+
         public List<Activity> GetAll()
         {
             return _repository.GetAll();
+        }
+
+        public List<string> GetBudgetYears()
+        {
+            return _repository.GetBudgetYears();
         }
 
         public Activity GetById(int id)

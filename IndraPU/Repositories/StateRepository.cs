@@ -47,6 +47,36 @@ namespace IndraPU.Repositories
             throw new NotImplementedException();
         }
 
+        public List<State> GetStatesGraph(string id, int year)
+        {
+            List<State> results = new List<State>();
+
+            if (id == null)
+            {
+                results = _db.States.ToList();
+            }
+            else
+            {
+                List<string> ids = id.Split(',').ToList();
+                List<int> idInts = new List<int>();
+                foreach (var item in ids)
+                {
+                    idInts.Add(Convert.ToInt32(item));
+                }
+
+                results = _db.States.Where(c => idInts.Contains(c.Id)).ToList();
+            }
+
+            
+            foreach (var state in results)
+            {
+                state.Programs = _db.Programs.Where(c => c.StateId == state.Id && c.Date.Year == year).ToList();
+            }
+
+            return results;
+            
+        }
+
         public bool IsStateExist(string areaCode)
         {
             return _db.States.Any(c => c.AreaCode.Equals(areaCode));

@@ -19,6 +19,17 @@ namespace IndraPU.Models
         [DisplayName("Nama")]
         public string Title { get; set; }
 
+        public decimal ThisYearBudget { get; set; }
+
+        [Required]
+        [DisplayName("PIC")]
+        public string PIC { get; set; }
+
+        [Required]
+        [DisplayName("Nomor Telepon")]
+        [DataType(DataType.PhoneNumber)]
+        public string PhoneNumber { get; set; }
+
         [Required]
         [DisplayName("Bentuk")]
         public string Type { get; set; }
@@ -32,5 +43,7 @@ namespace IndraPU.Models
         public decimal Budget { get; set; }
 
         public List<ActivityViewModel> Activities { get; set; }
+
+        public List<OPDBudgetViewModel> OPDBudgets { get; set; }
     }
 }

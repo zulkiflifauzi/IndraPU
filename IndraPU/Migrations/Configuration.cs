@@ -88,8 +88,8 @@ namespace IndraPU.Migrations
                         state.Longitude = 103.919442;
                         break;
                     case "Prov. Lampung":
-                        state.Latitude = 0.299184;
-                        state.Longitude = 101.704556;
+                        state.Latitude = -4.559499;
+                        state.Longitude = 105.414993;
                         break;
                     case "Prov. Kalimantan Barat":
                         state.Latitude = -0.257943;
@@ -141,7 +141,7 @@ namespace IndraPU.Migrations
                         break;
                     case "Prov. Papua":
                         state.Latitude = -4.284818;
-                        state.Longitude = 101.704556;
+                        state.Longitude = 138.071385;
                         break;
                     case "Prov. Bengkulu":
                         state.Latitude = -3.576029;

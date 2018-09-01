@@ -26,7 +26,36 @@ namespace IndraPU.Controllers
         [HttpPost]
         public ActionResult GetStates()
         {
-            return Json(StateFactory.GetAllStates());
+            var states = _stateLogic.GetAll();
+            List<MapViewModel> results = new List<MapViewModel>();
+            foreach (var item in states)
+            {
+                MapViewModel result = new MapViewModel();
+                result.Id = item.Id;
+                result.Title = item.Title;
+                result.Latitude = item.Latitude.HasValue ? item.Latitude.Value : 0;
+                result.Longitude = item.Longitude.HasValue ? item.Longitude.Value : 0;
+                result.InstructorCount = item.Instructors.Count;
+                results.Add(result);
+            }
+            return Json(results);
+        }
+
+        [HttpPost]
+        public ActionResult GetStatesGraph(string id, int year)
+        {
+            var states = _stateLogic.GetStatesGraph(id, year);
+            List<BudgetGraphViewModel> results = new List<BudgetGraphViewModel>();
+            foreach (var item in states)
+            {
+                BudgetGraphViewModel result = new BudgetGraphViewModel();
+                result.StateId = item.Id.ToString();
+                result.StateName = item.Title;
+                result.TotalActivities = item.Programs.Count;
+                result.TotalParticipants = item.Programs.Sum(c => c.Participants);
+                results.Add(result);
+            }
+            return Json(results);
         }
 
         // GET: State

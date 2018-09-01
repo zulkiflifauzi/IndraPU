@@ -10,5 +10,9 @@ namespace IndraPU.Repositories.Interfaces
     public interface IActivityRepository : IBaseRepository<Activity>
     {
         List<Activity> GetActivitiesByOPDId(int opdId);
+
+        List<string> GetBudgetYears();
+
+        List<Program> GetActivitiesByYear(string id, int year);
     }
 }

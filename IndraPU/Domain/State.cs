@@ -38,5 +38,35 @@ namespace IndraPU.Domain
             get { return _cities ?? (_cities = new Collection<City>()); }
             set { _cities = value; }
         }
+
+        private ICollection<int> _instructorIds;
+        [NotMapped]
+        public ICollection<int> InstructorIds
+        {
+            get { return _instructorIds ?? (_instructorIds = Instructors.Select(s => s.Id).ToList()); }
+            set { _instructorIds = value; }
+        }
+
+        private ICollection<Instructor> _instructors;
+        public virtual ICollection<Instructor> Instructors
+        {
+            get { return _instructors ?? (_instructors = new Collection<Instructor>()); }
+            set { _instructors = value; }
+        }
+
+        private ICollection<int> _programIds;
+        [NotMapped]
+        public ICollection<int> ProgramIds
+        {
+            get { return _programIds ?? (_programIds = Programs.Select(s => s.Id).ToList()); }
+            set { _programIds = value; }
+        }
+
+        private ICollection<Program> _programs;
+        public virtual ICollection<Program> Programs
+        {
+            get { return _programs ?? (_programs = new Collection<Program>()); }
+            set { _programs = value; }
+        }
     }
 }

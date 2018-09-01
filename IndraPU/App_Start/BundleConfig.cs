@@ -19,7 +19,9 @@ namespace IndraPU
                         "~/Scripts/bootstrap-treeview.min.js",
                         "~/Scripts/bootstrap-datepicker.min.js",
                         "~/Scripts/smartmenus/jquery.smartmenus.min.js",
-                        "~/Scripts/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js"));
+                        "~/Scripts/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js",
+                        "~/Scripts/Chart.min.js",
+                        "~/Scripts/bootstrap-multiselect/js/bootstrap-multiselect.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -36,7 +38,8 @@ namespace IndraPU
                       "~/Scripts/bootstrap-dropdown/css/animate.css",
                       "~/Scripts/bootstrap-dropdown/css/bootstrap-dropdownhover.css",
                       "~/Content/bootstrap-datepicker3.min.css",
-                      "~/Scripts/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.css"));
+                      "~/Scripts/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.css",
+                      "~/Scripts/bootstrap-multiselect/css/bootstrap-multiselect.css"));
         }
     }
 }
