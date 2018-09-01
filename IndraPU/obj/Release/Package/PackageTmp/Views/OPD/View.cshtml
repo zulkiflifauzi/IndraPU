@@ -1,0 +1,157 @@
+﻿@model IndraPU.Models.OPDViewModel
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>@Html.DisplayFor(model => model.Title)</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <h3>Bentuk: @Html.DisplayFor(model => model.Type)</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <h3>PIC</h3>
+        <p>@Html.DisplayFor(model => model.PIC)</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <h3>Nomor Telepon</h3>
+        <p>@Html.DisplayFor(model => model.PhoneNumber)</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <h3>Struktur</h3>
+        <p>@Html.Raw(Model.Structure)</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <h3>Anggaran (Rp.): @Html.DisplayFor(model => model.ThisYearBudget)</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <h3>Histori Anggaran</h3>
+        <div>
+            <p>
+                @Html.ActionLink("Tambah data Anggaran", "Create", "OPDBudget", routeValues: new { @id = Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+            </p>
+
+        </div>
+        <div>
+            <table id="opdBudgetsTable" class="table">
+                <thead>
+                    <tr>
+                        <th>Tahun</th>
+                        <th>Anggaran</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OPDBudgets)
+                    {
+                        <tr>
+                            <td>@item.Year</td>
+                            <td>@item.Budget</td>
+                            <td>
+                                @Html.ActionLink("Ubah", "Edit", "OPDBudget", routeValues: new { @id = item.Id }, htmlAttributes: new { @class = "btn btn-primary" }) @Html.ActionLink("Hapus", "Delete", "OPDBudget", routeValues: new { @id = item.Id }, htmlAttributes: new { @class = "btn btn-warning" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Tahun</th>
+                        <th>Anggaran</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <h3>Daftar Kegiatan</h3>
+        <div>
+            <p>
+                @Html.ActionLink("Tambah data Kegiatan", "Create", "Activity", routeValues: new { @id = Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+            </p>
+            
+        </div>    
+        <div>
+            <table id="activitiesTable" class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Tanggal</th>
+                        <th>Deskripsi</th>
+                        <th>Anggaran (Rp.)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Activities)
+                    {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.Date</td>
+                            <td>@Html.Raw(item.Description)</td>
+                            <td>@item.Budget</td>
+                            <td>
+                                @Html.ActionLink("Ubah", "Edit", "Activity", routeValues: new { @id = item.Id }, htmlAttributes: new { @class = "btn btn-primary" }) @Html.ActionLink("Hapus", "Delete", "Activity", routeValues: new { @id = item.Id }, htmlAttributes: new { @class = "btn btn-warning" })
+                            </td>
+                        </tr>
+                    }                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Title</th>
+                        <th>Tanggal</th>
+                        <th>Deskripsi</th>
+                        <th>Anggaran</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <p>
+            @Html.ActionLink("Ubah", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Hapus", "Delete", new { id = Model.Id }) |
+            @Html.ActionLink("Kembali ke daftar", "Index")
+        </p>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#activitiesTable').DataTable();
+
+        $('#opdBudgetsTable').DataTable();
+    });
+
+</script>

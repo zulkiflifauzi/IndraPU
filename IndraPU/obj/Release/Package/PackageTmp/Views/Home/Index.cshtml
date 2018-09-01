@@ -1,0 +1,314 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Dashboard</h3>
+    </div>
+</div>
+@*<div class="row">
+    <div class="col-md-12">
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">...</div>
+            <div role="tabpanel" class="tab-pane" id="profile">...</div>
+            <div role="tabpanel" class="tab-pane" id="messages">...</div>
+            <div role="tabpanel" class="tab-pane" id="settings">...</div>
+        </div>
+    </div>
+</div>*@
+<div class="row" style="height:500px">
+    <div class="col-md-12">
+        <hr />
+        <h4>Persebaran Instruktur</h4>
+    </div>
+    <div class="col-md-12" style="height:85%">
+        <div id="map"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <h4>Grafik Kegiatan per Provinsi</h4>
+    </div>
+    <div class="col-md-12">
+        <form>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-2">
+                        Tahun Anggaran
+                    </div>
+                    <div class="col-md-10">
+                        <select class="form-control" id="Years"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        Provinsi
+                    </div>
+                    <div class="col-md-10">
+                        <select class="form-control" id="States" multiple="multiple"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input onclick="loadGraph()" id="btnLoadGraph" type="button" value="Load" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </form>
+       
+    </div>
+    <div class="col-md-12" id="container">
+        <canvas id="canvas"></canvas>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    var map;
+    function initMap() {        
+
+        $.post("/State/GetStates/", function (data) {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -1.500611, lng: 118.509049 },
+                zoom: 5
+            });
+            var html = "";
+            jQuery.each(data, function (index, itemData) {
+                html += "<option value='" + itemData.Id + "'>" + itemData.Title + "</option>";
+                var infowindow = new google.maps.InfoWindow({
+                    content: "<div><h4>" + itemData.Title + "</h4><p>Jumlah Instruktur: " + itemData.InstructorCount  + "</p></div"
+                });
+
+                var marker = new google.maps.Marker({ position: { lat: parseFloat(itemData.Latitude), lng: parseFloat(itemData.Longitude) }, map: map, title: itemData.Title });
+                marker.addListener('mouseover', function () {
+                    infowindow.open(map, marker);
+                });
+
+                marker.addListener('mouseout', function () {
+                    infowindow.close();
+                });
+
+            });
+            $("#States").html(html);
+
+
+            $('#States').multiselect({
+                nonSelectedText: 'Semua Provinsi'
+            });
+        });
+    }
+
+    function loadBudgetYears(){
+        $.post("/Activity/GetBudgetYears/", function (data) {
+            var html = "";
+            jQuery.each(data, function (index, itemData) {
+                html += "<option value='" + itemData + "'>" + itemData + "</option>";
+            });
+
+            $("#Years").html(html);
+        });
+    }
+
+    function loadGraph()
+    {
+        if (myLineChart != null)
+        {
+            myLineChart.destroy();
+            States = [];
+            Participants = [];
+            Programs = [];
+        }
+
+        //if (myLineChart != null)
+        //{
+
+        //    var pieChartContent = document.getElementById('container');
+        //    pieChartContent.innerHTML = '&nbsp;';
+        //    $('#container').append('<canvas id="canvas"></canvas>');
+        //    alert('a');
+        //}
+
+        $.post("/State/GetStatesGraph/" + $("#States").val() + "?year=" + $("#Years").val(), function (data) {
+            jQuery.each(data, function (index, itemData) {
+                States.push(itemData.StateName);
+                Participants.push(itemData.TotalParticipants);
+                Programs.push(itemData.TotalActivities);
+            });
+
+            var barChartData = {
+                labels: States,
+                datasets: [{
+                    label: 'Jumlah Kegiatan',
+                    backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+                    borderColor: window.chartColors.red,
+                    borderWidth: 1,
+                    data: Programs
+                }, {
+                    label: 'Jumlah Peserta',
+                    backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+                    borderColor: window.chartColors.blue,
+                    borderWidth: 1,
+                    data: Participants
+                }]
+            };
+
+            var ctx = document.getElementById('canvas').getContext('2d');
+            myLineChart = new Chart(ctx, {
+                type: 'bar',
+                data: barChartData,
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Grafik Kegiatan per Provinsi'
+                    },
+                    scaleShowValues: true,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                autoSkip: false
+                            }
+                        }]
+                    }
+                }
+                
+            });
+        });
+    }
+
+    $(document).ready(function () {
+        initMap();
+        loadBudgetYears();
+        loadGraph();
+    });
+
+    var myLineChart = null;
+    var States = [];
+    var Participants = [];
+    var Programs = [];
+    var color = Chart.helpers.color;
+    //var barChartData = {
+    //    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    //    datasets: [{
+    //        label: 'Dataset 1',
+    //        backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+    //        borderColor: window.chartColors.red,
+    //        borderWidth: 1,
+    //        data: [
+    //            randomScalingFactor(),
+    //            randomScalingFactor(),
+    //            randomScalingFactor(),
+    //            randomScalingFactor(),
+    //            randomScalingFactor(),
+    //            randomScalingFactor(),
+    //            randomScalingFactor()
+    //        ]
+    //    }, {
+    //        label: 'Dataset 2',
+    //        backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+    //        borderColor: window.chartColors.blue,
+    //        borderWidth: 1,
+    //        data: [
+    //            randomScalingFactor(),
+    //            randomScalingFactor(),
+    //            randomScalingFactor(),
+    //            randomScalingFactor(),
+    //            randomScalingFactor(),
+    //            randomScalingFactor(),
+    //            randomScalingFactor()
+    //        ]
+    //    }]
+
+    //};
+
+    //window.onload = function () {
+    //    var ctx = document.getElementById('canvas').getContext('2d');
+    //    window.myBar = new Chart(ctx, {
+    //        type: 'bar',
+    //        data: barChartData,
+    //        options: {
+    //            responsive: true,
+    //            legend: {
+    //                position: 'top',
+    //            },
+    //            title: {
+    //                display: true,
+    //                text: 'Chart.js Bar Chart'
+    //            }
+    //        }
+    //    });
+
+    //};
+
+    //document.getElementById('randomizeData').addEventListener('click', function () {
+    //    var zero = Math.random() < 0.2 ? true : false;
+    //    barChartData.datasets.forEach(function (dataset) {
+    //        dataset.data = dataset.data.map(function () {
+    //            return zero ? 0.0 : randomScalingFactor();
+    //        });
+
+    //    });
+    //    window.myBar.update();
+    //});
+
+    //var colorNames = Object.keys(window.chartColors);
+    //document.getElementById('addDataset').addEventListener('click', function () {
+    //    var colorName = colorNames[barChartData.datasets.length % colorNames.length];
+    //    var dsColor = window.chartColors[colorName];
+    //    var newDataset = {
+    //        label: 'Dataset ' + barChartData.datasets.length,
+    //        backgroundColor: color(dsColor).alpha(0.5).rgbString(),
+    //        borderColor: dsColor,
+    //        borderWidth: 1,
+    //        data: []
+    //    };
+
+    //    for (var index = 0; index < barChartData.labels.length; ++index) {
+    //        newDataset.data.push(randomScalingFactor());
+    //    }
+
+    //    barChartData.datasets.push(newDataset);
+    //    window.myBar.update();
+    //});
+
+    //document.getElementById('addData').addEventListener('click', function () {
+    //    if (barChartData.datasets.length > 0) {
+    //        var month = MONTHS[barChartData.labels.length % MONTHS.length];
+    //        barChartData.labels.push(month);
+
+    //        for (var index = 0; index < barChartData.datasets.length; ++index) {
+    //            // window.myBar.addData(randomScalingFactor(), index);
+    //            barChartData.datasets[index].data.push(randomScalingFactor());
+    //        }
+
+    //        window.myBar.update();
+    //    }
+    //});
+
+    //document.getElementById('removeDataset').addEventListener('click', function () {
+    //    barChartData.datasets.splice(0, 1);
+    //    window.myBar.update();
+    //});
+
+    //document.getElementById('removeData').addEventListener('click', function () {
+    //    barChartData.labels.splice(-1, 1); // remove the label first
+
+    //    barChartData.datasets.forEach(function (dataset) {
+    //        dataset.data.pop();
+    //    });
+
+    //    window.myBar.update();
+    //});
+
+</script>
