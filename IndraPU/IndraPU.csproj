@@ -352,6 +352,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\favico.jpg" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\logo_2.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

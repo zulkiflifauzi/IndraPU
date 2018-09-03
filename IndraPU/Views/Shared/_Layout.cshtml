@@ -10,7 +10,7 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" href="~/Content/Images/favico.jpg" />
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto">
     <style>
          /* Always set the map height explicitly to define the size of the div
         * element that contains the map. */
@@ -34,26 +34,26 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a href="/">
-                            <img src="~/Content/Images/logo.png" class="logo-width" />
+                            <img src="~/Content/Images/logo_2.png" class="logo-width" />
                         </a>
                     </div>
                     <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
+                        
+                        @Html.Partial("_LoginPartial")
+                        <ul class="nav navbar-nav navbar-right">
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <li>@Html.ActionLink("Kegiatan", "Index", "Program")</li>
+                                <li>@Html.ActionLink("KEGIATAN", "Index", "Program")</li>
                                 <li>
                                     <a href="/OPD/Index/">OPD <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         @Html.OPDMenu()
                                     </ul>
                                 </li>
-                                <li>@Html.ActionLink("Instruktur", "Index", "Instructor")</li>
-                                <li>@Html.ActionLink("User", "Index", "User")</li>
+                                <li>@Html.ActionLink("INSTRUKTUR", "Index", "Instructor")</li>
+                                <li>@Html.ActionLink("USER", "Index", "User")</li>
                             }
                         </ul>
-                        @Html.Partial("_LoginPartial")
-
                     </div>
                 </div>
 
