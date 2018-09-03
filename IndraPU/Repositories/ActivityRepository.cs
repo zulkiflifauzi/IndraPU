@@ -73,7 +73,7 @@ namespace IndraPU.Repositories
 
         public List<string> GetBudgetYears()
         {
-            return _db.Activities.Select(c => c.Date.Year.ToString()).Distinct().ToList();
+            return _db.Programs.Select(c => c.Date.Year.ToString()).Distinct().ToList();
         }
 
         public Activity GetById(int id)

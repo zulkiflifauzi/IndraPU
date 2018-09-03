@@ -402,6 +402,7 @@
     <Content Include="Content\bootstrap-datepicker.css.map" />
     <Content Include="Scripts\bootstrap-multiselect\less\bootstrap-multiselect.less" />
     <None Include="Properties\PublishProfiles\GODADDY.pubxml" />
+    <None Include="Properties\PublishProfiles\GODADDYPACKAGE.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ckeditor\ckeditor_source.js" />
     <Content Include="Scripts\ckeditor\config.js" />

@@ -133,6 +133,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   background-color: #fff !important;
 }
 
+.logo-width {
+    width: 350px;
+}
+
 @media (max-width: 767px) {
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
     color: #0c5da5;
@@ -145,5 +149,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
   .navbar-inverse .navbar-toggle > .icon-bar {
     background-color: #000;
+    }
+  .logo-width {
+    width: 250px;
+    margin-top: 7px;
     }
 }

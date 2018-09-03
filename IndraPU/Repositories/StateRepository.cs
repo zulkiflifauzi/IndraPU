@@ -49,11 +49,12 @@ namespace IndraPU.Repositories
 
         public List<State> GetStatesGraph(string id, int year)
         {
+            List<State> resultsTemp = new List<State>();
             List<State> results = new List<State>();
 
             if (id == null)
             {
-                results = _db.States.ToList();
+                resultsTemp = _db.States.ToList();
             }
             else
             {
@@ -64,13 +65,21 @@ namespace IndraPU.Repositories
                     idInts.Add(Convert.ToInt32(item));
                 }
 
-                results = _db.States.Where(c => idInts.Contains(c.Id)).ToList();
+                resultsTemp = _db.States.Where(c => idInts.Contains(c.Id)).ToList();
             }
 
             
-            foreach (var state in results)
+            foreach (var state in resultsTemp)
             {
-                state.Programs = _db.Programs.Where(c => c.StateId == state.Id && c.Date.Year == year).ToList();
+                var startDate = new DateTime(year, 1, 1);
+                var endDate = new DateTime(year, 12, 31);
+                var anu = _db.Programs.Where(c => c.StateId == state.Id && c.Date.Year == year).ToList();
+                state.Programs.Clear();
+                foreach (var item in anu)
+                {
+                    state.Programs.Add(item);
+                }
+                results.Add(state);
             }
 
             return results;

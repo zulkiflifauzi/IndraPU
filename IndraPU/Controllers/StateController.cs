@@ -42,8 +42,12 @@ namespace IndraPU.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetStatesGraph(string id, int year)
+        public ActionResult GetStatesGraph(string id, int year = 0)
         {
+            if (year == 0)
+            {
+                return Json(null);
+            }
             var states = _stateLogic.GetStatesGraph(id, year);
             List<BudgetGraphViewModel> results = new List<BudgetGraphViewModel>();
             foreach (var item in states)

@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - E-BALAI</title>
+    <title>@ViewBag.Title - E-SINERGI</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" />
@@ -19,7 +19,7 @@
          }
     </style>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXxpVIlOlgIwGvHVVdhRSTinAgYxxpVs" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXxpVIlOlgIwGvHVVdhRSTinAgYxxpVs" type="text/javascript"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -34,7 +34,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a href="/">
-                            <img src="~/Content/Images/logo.png" width="350px" />
+                            <img src="~/Content/Images/logo.png" class="logo-width" />
                         </a>
                     </div>
                     <div class="navbar-collapse collapse">
@@ -70,6 +70,7 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 
     <div class="container body-content">
         @RenderBody()
