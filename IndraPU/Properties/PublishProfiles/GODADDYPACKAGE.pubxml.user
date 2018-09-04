@@ -25,7 +25,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/23/2018 09:21:47</publishTime>
     </File>
     <File Include="bin/IndraPU.dll">
-      <publishTime>09/02/2018 00:19:35</publishTime>
+      <publishTime>09/03/2018 20:16:37</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>08/23/2018 09:21:47</publishTime>
@@ -224,6 +224,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/Images/logo.png">
       <publishTime>08/29/2018 23:43:58</publishTime>
+    </File>
+    <File Include="Content/Images/logo_2.png">
+      <publishTime>09/03/2018 19:51:58</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>09/03/2018 19:55:57</publishTime>
