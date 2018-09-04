@@ -28,5 +28,11 @@ namespace IndraPU.Controllers
 
             return View();
         }
+
+        public ActionResult Html(string page)
+        {
+            ViewBag.Page = page;
+            return View();
+        }
     }
 }
