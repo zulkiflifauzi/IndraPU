@@ -51,7 +51,12 @@
                                     </ul>
                                 </li>
                                 <li>@Html.ActionLink("INSTRUKTUR", "Index", "Instructor")</li>
+                                <li>@Html.ActionLink("KONTAK", "Index", "Contact")</li>
                                 <li>@Html.ActionLink("USER", "Index", "User")</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("KONTAK", "Public", "Contact")</li>
                             }
                         </ul>
                     </div>

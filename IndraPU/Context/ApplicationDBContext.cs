@@ -31,6 +31,8 @@ namespace IndraPU.Context
 
         public DbSet<OPDBudget> OPDBudgets { get; set; }
 
+        public DbSet<Contact> Contacts { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

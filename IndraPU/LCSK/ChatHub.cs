@@ -11,7 +11,7 @@ using System.Text;
 using System.Net.Mail;
 using System.Collections.Concurrent;
 using System.Diagnostics;
-
+using System.Configuration;
 
 namespace IndraPU.LCSK
 {
@@ -350,7 +350,7 @@ namespace IndraPU.LCSK
         public void SendEmail(string from, string message)
         {
             var msg = new MailMessage();
-            msg.To.Add(new MailAddress(from));
+            msg.To.Add(new MailAddress(ConfigurationManager.AppSettings["AdminEmail"]));
             msg.Subject = "LCSK - Offline Contact";
             msg.Body = "You received an offline contact from your LCSK chat widget.\r\n\r\n" + message;
 
