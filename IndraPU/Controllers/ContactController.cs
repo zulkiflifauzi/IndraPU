@@ -3,6 +3,7 @@ using IndraPU.Base;
 using IndraPU.Domain;
 using IndraPU.Logic;
 using IndraPU.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -60,8 +61,9 @@ namespace IndraPU.Controllers
                         msg.To.Add(new MailAddress(ConfigurationManager.AppSettings["AdminEmail"]));
                         msg.Subject = "E-SINERGI Contact - " + model.Title;
                         msg.Body = "Dari: " +model.Email + ", Isi: " + model.Content;
+                        msg.From = new MailAddress("admin@e-sinergi.net");
 
-                        using (var client = new SmtpClient() { })
+                        using (var client = new SmtpClient() { Host = "relay-hosting.secureserver.net", Port = 25, EnableSsl = false, UseDefaultCredentials = false })
                         {
                             client.Send(msg);
                         }
@@ -90,7 +92,7 @@ namespace IndraPU.Controllers
         public ActionResult Details(int id)
         {
             var item = _contactLogic.GetById(id);
-            ReplyViewModel result = new ReplyViewModel() { Id = item.Id, Address = item.Address, Content = item.Content, Email = item.Email, Name = item.Name, Title = item.Title, CreatedDate = item.CreatedDate.ToString("dd-MMM-yyyy"), Status = item.Status, Reply = item.Reply, ReplyDate = item.RepliedDate.HasValue?  item.RepliedDate.Value.ToString("dd-MMM-yyyy hh:mm") : "", ReplyUser = item.RepliedDate.HasValue ? item.ReplyUser.FirstName + " " + item.ReplyUser.LastName : "" };
+            ReplyViewModel result = new ReplyViewModel() { Id = item.Id, Address = item.Address, Content = item.Content, Email = item.Email, Name = item.Name, Title = item.Title, CreatedDate = item.CreatedDate.ToString("dd-MMM-yyyy hh:mm"), Status = item.Status, Reply = item.Reply, ReplyDate = item.RepliedDate.HasValue?  item.RepliedDate.Value.ToString("dd-MMM-yyyy hh:mm") : "", ReplyUser = item.RepliedDate.HasValue ? item.ReplyUser.FirstName + " " + item.ReplyUser.LastName : "" };
 
             return View(result);
         }
@@ -133,9 +135,12 @@ namespace IndraPU.Controllers
             try
             {
                 var item = _contactLogic.GetById(model.Id);
+                string userIdString = User.Identity.GetUserId();
+                var userId = Convert.ToInt32(userIdString);
                 item.Reply = model.Reply;
                 item.RepliedDate = DateTime.Now;
                 item.Status = Constant.ContactStatus.REPLIED;
+                item.ReplyUserId = userId;
                 var response = _contactLogic.Edit(item);
                 if (response.IsError == true)
                 {
@@ -151,9 +156,10 @@ namespace IndraPU.Controllers
                     msg.To.Add(new MailAddress(item.Email));
                     msg.Subject = "E-SINERGI Admin";
                     msg.IsBodyHtml = true;
-                    msg.Body = "Isi kontak anda: <br />" + model.Content + "<br />Balasan: <br />" + model.Reply;
+                    msg.Body = "Isi kontak anda: <br />" + item.Content + "<br />Balasan: <br />" + model.Reply;
+                    msg.From = new MailAddress("admin@e-sinergi.net");
 
-                    using (var client = new SmtpClient() { })
+                    using (var client = new SmtpClient() { Host = "relay-hosting.secureserver.net", Port = 25, EnableSsl = false, UseDefaultCredentials = false })
                     {
                         client.Send(msg);
                     }

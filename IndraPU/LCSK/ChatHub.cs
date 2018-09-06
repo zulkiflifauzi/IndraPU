@@ -354,7 +354,9 @@ namespace IndraPU.LCSK
             msg.Subject = "LCSK - Offline Contact";
             msg.Body = "You received an offline contact from your LCSK chat widget.\r\n\r\n" + message;
 
-            using (var client = new SmtpClient() { })
+            msg.From = new MailAddress("admin@e-sinergi.net");
+
+            using (var client = new SmtpClient() { Host = "relay-hosting.secureserver.net", Port = 25, EnableSsl = false, UseDefaultCredentials = false })
             {
                 client.Send(msg);
             }

@@ -195,3 +195,12 @@ C:\Projects\IndraApp\IndraPU\obj\Release\IndraPU.Migrations.AddPICOPD.resources
 C:\Projects\IndraApp\IndraPU\obj\Release\IndraPU.csproj.GenerateResource.Cache
 C:\Projects\IndraApp\IndraPU\obj\Release\IndraPU.dll
 C:\Projects\IndraApp\IndraPU\obj\Release\IndraPU.pdb
+C:\Projects\Indra\IndraPU\bin\hbehr.recaptcha.dll
+C:\Projects\Indra\IndraPU\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Projects\Indra\IndraPU\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Projects\Indra\IndraPU\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Projects\Indra\IndraPU\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Projects\Indra\IndraPU\obj\Release\IndraPU.csprojResolveAssemblyReference.cache
+C:\Projects\Indra\IndraPU\obj\Release\IndraPU.Migrations.AddContactTable.resources
+C:\Projects\Indra\IndraPU\obj\Release\IndraPU.Migrations.AlterContactTable.resources
+C:\Projects\Indra\IndraPU\obj\Release\IndraPU.Migrations.AlterContactTable2.resources

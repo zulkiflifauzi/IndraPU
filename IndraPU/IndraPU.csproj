@@ -1035,6 +1035,7 @@
     <Content Include="Views\Contact\ThankYouPage.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\Edit.cshtml" />
+    <Content Include="Views\Contact\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\City\" />
