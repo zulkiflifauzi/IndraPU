@@ -13,6 +13,11 @@ namespace IndraPU.Controllers
             return View();
         }
 
+        public ActionResult Statistic()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

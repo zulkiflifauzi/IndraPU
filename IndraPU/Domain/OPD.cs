@@ -26,7 +26,7 @@ namespace IndraPU.Domain
         public string Title { get; set; }
 
         [Required]
-        public string Type { get; set; }
+        public string Form { get; set; }
 
         public string Structure { get; set; }
         

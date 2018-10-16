@@ -32,7 +32,7 @@ namespace IndraPU.Models
 
         [Required]
         [DisplayName("Bentuk")]
-        public string Type { get; set; }
+        public string Form { get; set; }
 
         [DisplayName("Struktur")]
         [AllowHtml]

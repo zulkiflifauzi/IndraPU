@@ -204,3 +204,4 @@ C:\Projects\Indra\IndraPU\obj\Release\IndraPU.csprojResolveAssemblyReference.cac
 C:\Projects\Indra\IndraPU\obj\Release\IndraPU.Migrations.AddContactTable.resources
 C:\Projects\Indra\IndraPU\obj\Release\IndraPU.Migrations.AlterContactTable.resources
 C:\Projects\Indra\IndraPU\obj\Release\IndraPU.Migrations.AlterContactTable2.resources
+C:\Projects\Indra\IndraPU\obj\Release\IndraPU.Migrations.ChangeTypeToFormOPD.resources

@@ -10,7 +10,6 @@ using System.Web.Mvc;
 
 namespace IndraPU.Controllers
 {
-    [Authorize]
     public class InstructorController : Controller
     {
         private InstructorLogic _instructorLogic = new InstructorLogic();
@@ -37,6 +36,7 @@ namespace IndraPU.Controllers
             return View(instructor);
         }
 
+        [Authorize]
         // GET: Instructor/Create
         public ActionResult Create()
         {
@@ -86,6 +86,8 @@ namespace IndraPU.Controllers
         }
 
         // POST: Instructor/Create
+
+        [Authorize]
         [HttpPost]
         public ActionResult Create(InstructorViewModel model)
         {
@@ -112,6 +114,8 @@ namespace IndraPU.Controllers
         }
 
         // GET: Instructor/Edit/5
+
+        [Authorize]
         public ActionResult Edit(int id)
         {
             var item = _instructorLogic.GetById(id);
@@ -121,6 +125,7 @@ namespace IndraPU.Controllers
         }
 
         // POST: Instructor/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(InstructorViewModel model)
         {
@@ -146,6 +151,7 @@ namespace IndraPU.Controllers
         }
 
         // GET: Instructor/Delete/5
+        [Authorize]
         public ActionResult Delete(int id)
         {
             var item = _instructorLogic.GetById(id);
@@ -154,6 +160,7 @@ namespace IndraPU.Controllers
         }
 
         // POST: Instructor/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(InstructorViewModel model)
         {

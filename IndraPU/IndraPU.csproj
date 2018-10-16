@@ -337,6 +337,10 @@
     <Compile Include="Migrations\201809061617117_AlterContactTable2.Designer.cs">
       <DependentUpon>201809061617117_AlterContactTable2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810151045044_ChangeTypeToFormOPD.cs" />
+    <Compile Include="Migrations\201810151045044_ChangeTypeToFormOPD.Designer.cs">
+      <DependentUpon>201810151045044_ChangeTypeToFormOPD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ActivityViewModel.cs" />
     <Compile Include="Models\BudgetGraphViewModel.cs" />
     <Compile Include="Models\CityViewModel.cs" />
@@ -408,9 +412,16 @@
     <Content Include="Content\bootstrap-treeview.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Assesor.png" />
+    <Content Include="Content\Images\Contact.jpg" />
     <Content Include="Content\Images\favico.jpg" />
+    <Content Include="Content\Images\Instruktur.jpg" />
+    <Content Include="Content\Images\Kontraktor.jpg" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\logo_2.png" />
+    <Content Include="Content\Images\Statistik.jpg" />
+    <Content Include="Content\Images\TKKons.jpg" />
+    <Content Include="Content\Images\user.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1036,6 +1047,7 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\Edit.cshtml" />
     <Content Include="Views\Contact\Details.cshtml" />
+    <Content Include="Views\Home\Statistic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\City\" />
@@ -1095,6 +1107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809061617117_AlterContactTable2.resx">
       <DependentUpon>201809061617117_AlterContactTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810151045044_ChangeTypeToFormOPD.resx">
+      <DependentUpon>201810151045044_ChangeTypeToFormOPD.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

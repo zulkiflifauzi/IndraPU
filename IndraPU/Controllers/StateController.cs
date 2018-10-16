@@ -26,7 +26,7 @@ namespace IndraPU.Controllers
         [HttpPost]
         public ActionResult GetStates()
         {
-            var states = _stateLogic.GetAll();
+            var states = _stateLogic.GetBJKWIVStates();
             List<MapViewModel> results = new List<MapViewModel>();
             foreach (var item in states)
             {

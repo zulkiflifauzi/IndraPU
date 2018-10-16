@@ -10,5 +10,6 @@ namespace IndraPU.Logic.Interface
     public interface IStateLogic : IBaseLogic<State>
     {
         List<State> GetStatesGraph(string id, int year);
+        List<State> GetBJKWIVStates();
     }
 }

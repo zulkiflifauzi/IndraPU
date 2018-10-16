@@ -79,11 +79,11 @@ namespace IndraPU.Controllers
             var list = _opdLogic.GetAll();
             ViewData["OPDs"] = list;
 
-            List<SelectListItem> odpTypeList = new List<SelectListItem>();
-            odpTypeList.Add(new SelectListItem { Value = "BIDANG", Text = "BIDANG" });
-            odpTypeList.Add(new SelectListItem { Value = "SEKSI", Text = "SEKSI" });
+            List<SelectListItem> odpFormList = new List<SelectListItem>();
+            odpFormList.Add(new SelectListItem { Value = "BIDANG", Text = "BIDANG" });
+            odpFormList.Add(new SelectListItem { Value = "SEKSI", Text = "SEKSI" });
 
-            ViewData["Types"] = odpTypeList;
+            ViewData["Forms"] = odpFormList;
 
             //List<SelectListItem> streetNumberList = new List<SelectListItem>();
             //foreach (var item in _streetNumberLogic.GetAll())
@@ -106,7 +106,7 @@ namespace IndraPU.Controllers
         {
             try
             {
-                OPD opd = new OPD() { PIC = model.PIC, PhoneNumber = model.PhoneNumber, ParentId = model.ParentId, Title = model.Title, Type = model.Type, Structure = model.Structure };
+                OPD opd = new OPD() { PIC = model.PIC, PhoneNumber = model.PhoneNumber, ParentId = model.ParentId, Title = model.Title, Form = model.Form, Structure = model.Structure };
                 var response = _opdLogic.Create(opd);
                 if (response.IsError == true)
                 {
@@ -131,7 +131,7 @@ namespace IndraPU.Controllers
         public ActionResult View(int id)
         {
             var opd = _opdLogic.GetById(id);
-            OPDViewModel result = new OPDViewModel() { PhoneNumber = opd.PhoneNumber, PIC = opd.PIC, Id = opd.Id, Title = opd.Title, ParentId = opd.ParentId, Structure = opd.Structure, Type = opd.Type };
+            OPDViewModel result = new OPDViewModel() { PhoneNumber = opd.PhoneNumber, PIC = opd.PIC, Id = opd.Id, Title = opd.Title, ParentId = opd.ParentId, Structure = opd.Structure, Form = opd.Form };
 
             var thisYearBudget = opd.OPDBudgets.SingleOrDefault(c => c.Year == DateTime.Now.Year);
             if (thisYearBudget != null)
@@ -170,7 +170,7 @@ namespace IndraPU.Controllers
         {
             PrepareSelectList();
             var opd = _opdLogic.GetById(id);
-            OPDViewModel result = new OPDViewModel() { PIC = opd.PIC, PhoneNumber = opd.PhoneNumber, Id = opd.Id, Title = opd.Title, ParentId = opd.ParentId, Structure = opd.Structure, Type = opd.Type };
+            OPDViewModel result = new OPDViewModel() { PIC = opd.PIC, PhoneNumber = opd.PhoneNumber, Id = opd.Id, Title = opd.Title, ParentId = opd.ParentId, Structure = opd.Structure, Form = opd.Form };
             return View(result);
         }
 
@@ -180,7 +180,7 @@ namespace IndraPU.Controllers
         {
             try
             {
-                OPD opd = new OPD() { PhoneNumber = model.PhoneNumber, PIC = model.PIC, Id = model.Id, ParentId = model.ParentId, Title = model.Title, Type = model.Type, Structure = model.Structure };
+                OPD opd = new OPD() { PhoneNumber = model.PhoneNumber, PIC = model.PIC, Id = model.Id, ParentId = model.ParentId, Title = model.Title, Form = model.Form, Structure = model.Structure };
                 var response = _opdLogic.Edit(opd);
                 if (response.IsError == true)
                 {
@@ -204,7 +204,7 @@ namespace IndraPU.Controllers
         public ActionResult Delete(int id)
         {
             var opd = _opdLogic.GetById(id);
-            OPDViewModel result = new OPDViewModel() { PhoneNumber = opd.PhoneNumber, PIC = opd.PIC, Id = opd.Id, Title = opd.Title,  ParentId = opd.ParentId, Structure = opd.Structure, Type = opd.Type };
+            OPDViewModel result = new OPDViewModel() { PhoneNumber = opd.PhoneNumber, PIC = opd.PIC, Id = opd.Id, Title = opd.Title,  ParentId = opd.ParentId, Structure = opd.Structure, Form = opd.Form };
             return View(result);
         }
 
@@ -223,7 +223,7 @@ namespace IndraPU.Controllers
                     }
 
                     var opd = _opdLogic.GetById(model.Id);
-                    OPDViewModel result = new OPDViewModel() { PhoneNumber = opd.PhoneNumber, PIC = opd.PIC, Id = opd.Id, Title = opd.Title, ParentId = opd.ParentId, Structure = opd.Structure, Type = opd.Type };
+                    OPDViewModel result = new OPDViewModel() { PhoneNumber = opd.PhoneNumber, PIC = opd.PIC, Id = opd.Id, Title = opd.Title, ParentId = opd.ParentId, Structure = opd.Structure, Form = opd.Form };
                     return View(result);
                 }
                 return RedirectToAction("Index");

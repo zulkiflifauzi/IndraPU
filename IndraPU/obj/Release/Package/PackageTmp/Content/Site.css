@@ -155,4 +155,101 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     width: 250px;
     margin-top: 7px;
     }
+
+  .space-top {
+    margin-top: 20px;
+    }
+}
+
+.clear20 {
+    clear: both;
+    height: 20px;
+    width: 100%;
+}
+
+.card {
+    height: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+
+.bg-orange {
+    background-image: url("Images/TKKons.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: deepskyblue;
+}
+
+.bg-red {
+    background-image: url("Images/Kontraktor.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: coral;
+}
+
+.bg-green {
+    background-image: url("Images/Instruktur.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: palevioletred;
+}
+
+.bg-green a {
+    color: palevioletred;
+}
+
+.bg-blue {
+    background-image: url("Images/Assesor.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: olive;
+}
+.bg-statistic {
+    background-image: url("Images/Statistik.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg-statistic a {    
+    color: tomato;
+}
+
+.bg-contact {
+    background-image: url("Images/Contact.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg-contact  a {        
+    color: black;
+}
+
+.bg-user {
+    background-image: url("Images/user.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg-user  a {        
+    color: lightsalmon;
+}
+
+
+.card-number {
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.card-center {
+    padding: 50px 0;
+    text-align: center;
+}
+
+@media (max-width: 1200px) { 
+
+  .space-top {
+    margin-top: 20px;
+    }
 }
