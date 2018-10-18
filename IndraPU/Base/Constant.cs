@@ -12,5 +12,11 @@ namespace IndraPU.Base
             public const string NEW = "NEW";
             public const string REPLIED = "REPLIED";
         }
+
+        public static class InstructorType
+        {
+            public const string INSTRUCTOR = "INSTRUCTOR";
+            public const string ASSESOR = "ASSESOR";
+        }
     }
 }

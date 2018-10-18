@@ -50,5 +50,10 @@ namespace IndraPU.Logic
         {
             return _repository.GetById(id);
         }
+
+        public List<Instructor> GetInstructorByType(string type)
+        {
+            return _repository.GetAll().Where(c => c.Type.Equals(type)).ToList();
+        }
     }
 }

@@ -11,14 +11,14 @@ using System.Web.Mvc;
 
 namespace IndraPU.Controllers
 {
-    public class InstructorController : Controller
+    public class AssesorController : Controller
     {
         private InstructorLogic _instructorLogic = new InstructorLogic();
 
         // GET: Instructor
         public ActionResult Index()
         {
-            var instructors = _instructorLogic.GetInstructorByType(Constant.InstructorType.INSTRUCTOR);
+            var instructors = _instructorLogic.GetInstructorByType(Constant.InstructorType.ASSESOR);
             List<InstructorViewModel> results = new List<InstructorViewModel>();
             foreach (var item in instructors)
             {
@@ -54,7 +54,7 @@ namespace IndraPU.Controllers
             {
                 if (stateId.HasValue)
                 {
-                    if(stateId == item.Id)
+                    if (stateId == item.Id)
                         stateList.Add(new SelectListItem { Value = item.Id.ToString(), Text = item.Title, Selected = true });
                     else
                         stateList.Add(new SelectListItem { Value = item.Id.ToString(), Text = item.Title });
@@ -83,7 +83,7 @@ namespace IndraPU.Controllers
                 }
                 ViewData["Cities"] = cityList;
             }
-            
+
         }
 
         // POST: Instructor/Create
@@ -94,7 +94,7 @@ namespace IndraPU.Controllers
         {
             try
             {
-                Instructor instructor = new Instructor() { Address = model.Address, Area = model.Area, CityId = model.CityId, DateOfBirth = DateTime.ParseExact(model.DateOfBirth, "mm-dd-yyyy", System.Globalization.CultureInfo.InvariantCulture), Email = model.Email, Name = model.Name, PhoneNumber = model.PhoneNumber, PlaceOfBirth = model.PlaceOfBirth, StateId = model.StateId, Type = Constant.InstructorType.INSTRUCTOR };
+                Instructor instructor = new Instructor() { Address = model.Address, Area = model.Area, CityId = model.CityId, DateOfBirth = DateTime.ParseExact(model.DateOfBirth, "mm-dd-yyyy", System.Globalization.CultureInfo.InvariantCulture), Email = model.Email, Name = model.Name, PhoneNumber = model.PhoneNumber, PlaceOfBirth = model.PlaceOfBirth, StateId = model.StateId, Type = Constant.InstructorType.ASSESOR };
                 var response = _instructorLogic.Create(instructor);
                 if (response.IsError == true)
                 {

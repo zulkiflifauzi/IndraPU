@@ -232,6 +232,7 @@
     <Compile Include="Component\OPDFactory.cs" />
     <Compile Include="Component\StateFactory.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\AssesorController.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
@@ -340,6 +341,10 @@
     <Compile Include="Migrations\201810151045044_ChangeTypeToFormOPD.cs" />
     <Compile Include="Migrations\201810151045044_ChangeTypeToFormOPD.Designer.cs">
       <DependentUpon>201810151045044_ChangeTypeToFormOPD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810170253175_AddInstructorType.cs" />
+    <Compile Include="Migrations\201810170253175_AddInstructorType.Designer.cs">
+      <DependentUpon>201810170253175_AddInstructorType.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ActivityViewModel.cs" />
     <Compile Include="Models\BudgetGraphViewModel.cs" />
@@ -1048,6 +1053,11 @@
     <Content Include="Views\Contact\Edit.cshtml" />
     <Content Include="Views\Contact\Details.cshtml" />
     <Content Include="Views\Home\Statistic.cshtml" />
+    <Content Include="Views\Assesor\Create.cshtml" />
+    <Content Include="Views\Assesor\Delete.cshtml" />
+    <Content Include="Views\Assesor\Details.cshtml" />
+    <Content Include="Views\Assesor\Edit.cshtml" />
+    <Content Include="Views\Assesor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\City\" />
@@ -1110,6 +1120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810151045044_ChangeTypeToFormOPD.resx">
       <DependentUpon>201810151045044_ChangeTypeToFormOPD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810170253175_AddInstructorType.resx">
+      <DependentUpon>201810170253175_AddInstructorType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -9,5 +9,6 @@ namespace IndraPU.Logic.Interface
 {
     public interface IInstructorLogic : IBaseLogic<Instructor>
     {
+        List<Instructor> GetInstructorByType(string type);
     }
 }
